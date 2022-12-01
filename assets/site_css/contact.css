@@ -1,0 +1,7 @@
+@media screen and (max-width: 480px) {
+
+    .maps-box{
+        display: none;
+    }
+
+}

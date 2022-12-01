@@ -1,0 +1,18 @@
+RewriteEngine On
+RewriteCond $1 !^(index\.php|assets|images|js|css|uploads|favicon.png)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php/$1 [L]
+
+
+# php -- END cPanel-generated handler, do not edit
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+    Header set Access-Control-Max-Age 3600
+    Header set Access-Control-Allow-Methods "GET, POST, OPTIONS, DELETE, PUT"
+    Header set Access-Control-Allow-Headers "X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method"
+    Header set Access-Control-Allow-Credentials true
+</IfModule>
+
+php_value upload_max_filesize 128M  
+php_value post_max_size 128M  

@@ -1,0 +1,20 @@
+@font-face {font-family: "Venus Rising";
+    src: url("../fonts/venusiris.ttf");
+
+}
+
+@font-face {font-family: 'Open Sans',sans-serif;
+    src: url("../fonts/OpenSans-SemiBold.tff");
+
+}
+
+
+
+
+
+/* /* src: url("http://db.onlinewebfonts.com/t/9c8d3dbada8c85ef456102814fdb5b12.eot");
+src: url("http://db.onlinewebfonts.com/t/9c8d3dbada8c85ef456102814fdb5b12.eot?#iefix") format("embedded-opentype"), 
+url("http://db.onlinewebfonts.com/t/9c8d3dbada8c85ef456102814fdb5b12.woff2") format("woff2"),
+url("http://db.onlinewebfonts.com/t/9c8d3dbada8c85ef456102814fdb5b12.woff") format("woff"),
+url("http://db.onlinewebfonts.com/t/9c8d3dbada8c85ef456102814fdb5b12.ttf") format("truetype"), 
+url("http://db.onlinewebfonts.com/t/9c8d3dbada8c85ef456102814fdb5b12.svg#Venus Rising") format("svg"); /*
