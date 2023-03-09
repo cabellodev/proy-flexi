@@ -68,13 +68,8 @@ class HomeSite extends CI_Controller {
  }
 
 
-
-
-
    public function getNews(){
-     
     $this->load->model('NewsModel');
-
     if($res=$this->NewsModel->get_news()){
        $this->response->sendJSONResponse($res); 
      }else{
@@ -84,9 +79,7 @@ class HomeSite extends CI_Controller {
   }
 
   public function getRubros(){
-     
     $this->load->model('RubrosModel');
-
     if($res=$this->RubrosModel->get_rubros()){
        $this->response->sendJSONResponse($res); 
      }else{
@@ -186,6 +179,9 @@ public function getSubSubcategories($id_subcategory){
   
   }
 
+  
+
+
 
   public function getGallery($id) {
 
@@ -213,14 +209,11 @@ public function getSubSubcategories($id_subcategory){
         if(empty($data['email'])){ $ok=false; }
      
         if($ok){
-          
             if($this->EmployModel->create_notification($data)){
-      
                 $this->response->sendJSONResponse(array("msg"=>"La notificación se ha registrado con éxito"),200); 
              }else{
                     $this->response->sendJSONResponse(array('msg' => 'No se ha podido obtener los datos.'), 400); 
              }
-
         }else{
             $this->response->sendJSONResponse(array('msg' => 'Complete todos los campos.'), 400); 
         }
@@ -237,22 +230,16 @@ public function getSubSubcategories($id_subcategory){
       }
   }
 
-
-
-  
   public function getProductId($id) {
-
       $this->load->model('ProductModel');
-          if( $res= $this->ProductModel->get_products_id($id)){
-            $this->response->sendJSONResponse($res);
-          }else{
-          $this->response->sendJSONResponse(array('msg' => 'No se ha podido obtener los datos.'), 400); 
-          }
+      if( $res= $this->ProductModel->get_products_id($id)){
+       $this->response->sendJSONResponse($res);
+      }else{
+       $this->response->sendJSONResponse(array('msg' => 'No se ha podido obtener los datos.'), 400); 
+      }
   }
 
-
   public function  getAllProducts() {
-
     $this->load->model('ProductModel');
         if( $res= $this->ProductModel->get_product()){
           $this->response->sendJSONResponse($res);
@@ -260,7 +247,6 @@ public function getSubSubcategories($id_subcategory){
         $this->response->sendJSONResponse(array('msg' => 'No se ha podido obtener los datos.'), 400); 
         }
   }
-
 
   public function getContacts() {
        
@@ -293,12 +279,6 @@ public function getSubSubcategories($id_subcategory){
         $this->response->sendJSONResponse(array('msg' => 'No se ha podido obtener los datos.'), 400); 
       }
    }
-
-
-
-
-
- 
   }
 
   

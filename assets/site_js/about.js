@@ -53,7 +53,7 @@ draw_sections =(section)=>{
           } 
         
           if(element.item == "Cabecera de módulo Nosotros"){
-            url = host_url + `assets/images/prueba_banner.jpg`;
+            url = host_url + `assets/images/sections/${element.url}`;
            // url = host_url + `assets/images/sections/${element.url}`;
             $(".title-intro").text(element.title.toUpperCase());
             $(".page-header-about").css({"background":`linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url(${url})`, 

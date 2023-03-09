@@ -120,6 +120,7 @@ draw_notices_home= (notice)=>{
 
     $('.owl-carousel').owlCarousel({
         loop:true,
+        smartSpeed:500,
         margin:30,
         mobile:true,
         responsive:{
@@ -181,7 +182,7 @@ get_news = ()=> {
 			}
         })
 }
-
+/*
 draw_news_home = (news)=>{
 
     
@@ -222,11 +223,55 @@ draw_news_home = (news)=>{
     $("#news-home").append(html);
     
  });
+}*/
+
+draw_news_home = (news)=>{
+ 
+    let inicialize_time= new Date();
+	let current=inicialize_time.toISOString().split('T')[0];
+  
+
+    $("#news-home").empty();
+ 
+    news.forEach(element => {
+    
+    if(element.state == 1 ){
+    
+     if( current < element.date_expiration){
+
+    html = ` <div class="row border-bottom pb-5 mb-5" data-aos-duration="1500" data-aos="zoom-in-left">
+                 <div class="col-lg-4 col-12">
+                     <img src="${host_url}/assets/images/news/${element.url}" class="schedule-image img-fluid" alt="">
+                 </div>
+
+                 <div class="col-lg-8 col-12 mt-3 mt-lg-0">
+        
+                         <h4 class="mb-2">${element.title}</h4>
+
+                         <p>${element.description} </p>
+
+                         <div class="d-flex align-items-center mt-4">
+                               
+
+                                <span class="mx-3 mx-lg-5">
+                                    <i class="bi-clock me-2"></i>
+                                    ${element.date}
+                                </span>
+
+                                <span class="mx-1 mx-lg-5">
+                                    <i class="bi-layout-sidebar me-2"></i>
+                                Sede Coquimbo
+                                </span>
+                        </div>
+                 </div>
+             </div>`;
+   
+    $("#news-home").append(html);
+     }
+    
 }
-
-
-
-
+ });
+}
 
 
 draw_intro_slice = ()=> { 
@@ -253,23 +298,24 @@ draw_intro_slice = ()=> {
     if(element.state==1){
         html = `<div class="owl-carousel-item position-relative ">
         <img src="${host_url}assets/images/slide/${element.url}">
-        
     </div>`;
 
     $(".intro-carousel").append(html);
     }
+   $('.owl-carousel-item').owlCarousel({
+        smartSpeed: 500,
+        loop:true,
+        nav:true
 
+       
     });
+});
 
-   
+
+
+
+
+
+
 
 }
-
-
-
-
-
-
-
-
-

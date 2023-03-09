@@ -174,7 +174,7 @@
                     <i class="fas fa-box"></i>
                     <span>Productos</span>
                 </a>
-         <!--       <div id="collapseProducts" class="collapse" aria-labelledby="headingUtilities"
+              <div id="collapseProducts" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
 
@@ -184,7 +184,7 @@
                         <a class="collapse-item" href="<?php echo base_url();?>product/category"><i class="fas fa-th-list"></i> Categorías</a>
                         <a class="collapse-item" href="<?php echo base_url();?>product/products"> <i class="fas fa-box"></i> Productos</a>
                     </div>
-                </div>-->
+                </div>
             </li>
 
           

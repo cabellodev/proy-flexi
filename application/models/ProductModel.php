@@ -42,181 +42,289 @@ public function get_product()
 }
 
 
-    public function get_products($data)
-    {    
-            $category=$data['category'];
-            $supplier=$data['supplier'];
-            $subcategory=$data['subcategory'];
-            $subsubcategory=$data['subsubcategory'];
+public function get_products($data)
+{    
+        $category=$data['category'];
+        $supplier=$data['supplier'];
+        $subcategory=$data['subcategory'];
+        $subsubcategory= $data['subsubcategory'];
+        $product_name = $data['name_product'];
 
-
-            if($supplier !=0 && $category ==0 && $subcategory ==0 && $subsubcategory ==0){
-
-                $query = "SELECT p.id ,p.name ,sc.name subcategory, c.name category , s.name supplier,p.image_first
-                FROM product p
-                LEFT JOIN category c ON c.id = p.category_id
-                LEFT JOIN supplier s ON s.id= p.supplier_id
-                LEFT JOIN subcategory sc ON sc.id= p.subcategory_id
-                LEFT JOIN subsubcategory ssc ON ssc.id= p.subsubcategory_id
-                WHERE p.supplier_id=? 
-                "; 
-                 return  $this->db->query($query,array($supplier))->result_array();
-
-            }else if ($supplier !=0 && $category !=0 && $subcategory ==0 && $subsubcategory ==0){
-                $query = "SELECT p.id ,p.name ,sc.name subcategory, c.name category , s.name supplier,p.image_first
-                FROM product p
-                LEFT JOIN category c ON c.id = p.category_id
-                LEFT JOIN supplier s ON s.id= p.supplier_id
-                LEFT JOIN subcategory sc ON sc.id= p.subcategory_id
-                LEFT JOIN subsubcategory ssc ON ssc.id= p.subsubcategory_id
-                WHERE p.supplier_id=? AND p.category_id =?
-                "; 
-
-                return  $this->db->query($query,array($supplier,$category))->result_array();
-
-            }else if ($supplier !=0 && $category !=0 && $subcategory !=0 && $subsubcategory ==0){
-
-                $query = "SELECT p.id ,p.name ,sc.name subcategory, c.name category , s.name supplier,p.image_first
-                FROM product p
-                LEFT JOIN category c ON c.id = p.category_id
-                LEFT JOIN supplier s ON s.id= p.supplier_id
-                LEFT JOIN subcategory sc ON sc.id= p.subcategory_id
-                LEFT JOIN subsubcategory ssc ON ssc.id= p.subsubcategory_id
-                WHERE p.supplier_id=? AND p.category_id =? AND p.subcategory_id =?
-                "; 
-
-                return  $this->db->query($query,array($supplier,$category,$subcategory))->result_array();
-
-            }else if ($supplier !=0 && $category !=0 && $subcategory !=0 && $subsubcategory !=0){
-
-                $query = "SELECT p.id ,p.name ,sc.name subcategory, c.name category , s.name supplier,p.image_first
-                FROM product p
-                LEFT JOIN category c ON c.id = p.category_id
-                LEFT JOIN supplier s ON s.id= p.supplier_id
-                LEFT JOIN subcategory sc ON sc.id= p.subcategory_id
-                LEFT JOIN subsubcategory ssc ON ssc.id= p.subsubcategory_id
-                WHERE p.supplier_id=? AND p.category_id =? AND p.subcategory_id =? AND p.subsubcategory_id =?
-                "; 
-
-             return  $this->db->query($query,array($supplier,$category,$subcategory,$subsubcategory))->result_array();
-            
-            }else if ($supplier ==0 && $category !=0 && $subcategory ==0 && $subsubcategory ==0){
-
-                $query = "SELECT p.id ,p.name ,sc.name subcategory, c.name category , s.name supplier,p.image_first
-                FROM product p
-                LEFT JOIN category c ON c.id = p.category_id
-                LEFT JOIN supplier s ON s.id= p.supplier_id
-                LEFT JOIN subcategory sc ON sc.id= p.subcategory_id
-                LEFT JOIN subsubcategory ssc ON ssc.id= p.subsubcategory_id
-                WHERE p.category_id =? 
-                "; 
-
-             return  $this->db->query($query,array($category))->result_array();
-            
-            }else if ($supplier ==0 && $category !=0 && $subcategory !=0 && $subsubcategory ==0){
-
-                $query = "SELECT p.id ,p.name ,sc.name subcategory, c.name category , s.name supplier,p.image_first
-                FROM product p
-                LEFT JOIN category c ON c.id = p.category_id
-                LEFT JOIN supplier s ON s.id= p.supplier_id
-                LEFT JOIN subcategory sc ON sc.id= p.subcategory_id
-                LEFT JOIN subsubcategory ssc ON ssc.id= p.subsubcategory_id
-                WHERE p.category_id =? AND p.subcategory_id = ?
-                "; 
-
-             return  $this->db->query($query,array($category,$subcategory))->result_array();
-            
-            }else if ($supplier ==0 && $category !=0 && $subcategory !=0 && $subsubcategory !=0){
-
-                $query = "SELECT p.id ,p.name ,sc.name subcategory, c.name category , s.name supplier,p.image_first
-                FROM product p
-                LEFT JOIN category c ON c.id = p.category_id
-                LEFT JOIN supplier s ON s.id= p.supplier_id
-                LEFT JOIN subcategory sc ON sc.id= p.subcategory_id
-                LEFT JOIN subsubcategory ssc ON ssc.id= p.subsubcategory_id
-                WHERE p.category_id =? AND p.subcategory_id = ? AND p.subsubcategory_id =?
-                "; 
-
-             return  $this->db->query($query,array($category,$subcategory,$subsubcategory))->result_array();
-            
-            }
-            /*
-            if( $supplier=="0" && $category != "0" && $subcategory=="0" && $subsubcategory=="0"){
-
-                $query = "SELECT p.id ,p.name ,sc.name subcategory, c.name category , s.name supplier,p.image_first
-                FROM product p
-                LEFT JOIN category c ON c.id = p.category_id
-                LEFT JOIN supplier s ON s.id= p.supplier_id
-                WHERE p.category_id = ? 
-                "; 
-                return  $this->db->query($query,array($category))->result_array();
-
-            }else if($supplier=="0" && $category!="0" && $subcategory !="0" && $subsubcategory=="0"){
-
-                $query = "SELECT p.id ,p.name ,sc.name subcategory, c.name category , s.name supplier,p.image_first
-                FROM product p
-                LEFT JOIN category c ON c.id = p.category_id
-                LEFT JOIN supplier s ON s.id= p.supplier_id
-                LEFT JOIN subcategory sc ON sc.id= p.subcategory_id
-                WHERE p.category_id = ? AND p.subcategory_id = ? 
-                "; 
-                 return  $this->db->query($query,array($category,$subcategory))->result_array();
-
-            }else if($supplier!="0" && $category!="0" && $subcategory !="0" && $subsubcategory=="0"){
-
-                $query = "SELECT p.id ,p.name ,sc.name subcategory, c.name category , s.name supplier,p.image_first
-                FROM product p
-                LEFT JOIN category c ON c.id = p.category_id
-                LEFT JOIN supplier s ON s.id= p.supplier_id
-                LEFT JOIN subcategory sc ON sc.id= p.subcategory_id
-                WHERE p.supplier_id =? AND p.category_id = ? AND p.subcategory_id = ? 
-                "; 
-                 return  $this->db->query($query,array($supplier,$category,$subcategory))->result_array();
-
-            }else if($supplier==0 && $category!=0 && $subcategory !=0 && $subsubcategory!=0){
-
-                $query = "SELECT p.id ,p.name ,sc.name subcategory, c.name category , s.name supplier,p.image_first
-                FROM product p
-                LEFT JOIN category c ON c.id = p.category_id
-                LEFT JOIN supplier s ON s.id= p.supplier_id
-                LEFT JOIN subcategory sc ON sc.id= p.subcategory_id
-                LEFT JOIN subsubcategory ssc ON ssc.id= p.subsubcategory_id
-                WHERE  p.category_id = ? AND p.subcategory_id = ? AND p.subsubcategory_id = ? 
-                "; 
-                 return  $this->db->query($query,array($category,$subcategory,$sub$subcategory))->result_array();
 
        
-            }else if($supplier!=0 && $category!=0 && $subcategory !=0 && $subsubcategory!=0){
+        if($product_name ==""){
 
-                $query = "SELECT p.id ,p.name ,sc.name subcategory, c.name category , s.name supplier,p.image_first
-                FROM product p
-                LEFT JOIN category c ON c.id = p.category_id
-                LEFT JOIN supplier s ON s.id= p.supplier_id
-                LEFT JOIN subcategory sc ON sc.id= p.subcategory_id
-                LEFT JOIN subsubcategory ssc ON ssc.id= p.subsubcategory_id
-                WHERE p.supplier_id=? AND p.category_id = ? AND p.subcategory_id = ? AND p.subsubcategory_id = ? 
-                "; 
-                 return  $this->db->query($query,array($supplier,$category,$subcategory,$sub$subcategory))->result_array();
+                if($supplier !=0 && $category ==0 && $subcategory ==0 && $subsubcategory ==0){
 
-            }else if($supplier!=0 && $category==0 && $subcategory ==0 && $subsubcategory==0){
+                    $query = "SELECT p.id ,p.name ,sc.name subcategory, c.name category , s.name supplier,p.image_first
+                    FROM product p
+                    LEFT JOIN category c ON c.id = p.category_id
+                    LEFT JOIN supplier s ON s.id= p.supplier_id
+                    LEFT JOIN subcategory sc ON sc.id= p.subcategory_id
+                    LEFT JOIN subsubcategory ssc ON ssc.id= p.subsubcategory_id
+                    WHERE p.supplier_id=? 
+                    "; 
+                    return  $this->db->query($query,array($supplier))->result_array();
 
-                $query = "SELECT p.id ,p.name ,sc.name subcategory, c.name category , s.name supplier,p.image_first
-                FROM product p
-                LEFT JOIN category c ON c.id = p.category_id
-                LEFT JOIN supplier s ON s.id= p.supplier_id
-                WHERE p.supplier_id=?
-                "; 
-                 return  $this->db->query($query,array($supplier))->result_array();
+                }else if ($supplier !=0 && $category !=0 && $subcategory ==0 && $subsubcategory ==0){
+                    $query = "SELECT p.id ,p.name ,sc.name subcategory, c.name category , s.name supplier,p.image_first
+                    FROM product p
+                    LEFT JOIN category c ON c.id = p.category_id
+                    LEFT JOIN supplier s ON s.id= p.supplier_id
+                    LEFT JOIN subcategory sc ON sc.id= p.subcategory_id
+                    LEFT JOIN subsubcategory ssc ON ssc.id= p.subsubcategory_id
+                    WHERE p.supplier_id=? AND p.category_id =? 
+                    "; 
 
-            }
-    
- 
-           */
-    
-            
+                    return  $this->db->query($query,array($supplier,$category))->result_array();
+
+                }else if ($supplier !=0 && $category !=0 && $subcategory !=0 && $subsubcategory ==0){
+
+                    $query = "SELECT p.id ,p.name ,sc.name subcategory, c.name category , s.name supplier,p.image_first
+                    FROM product p
+                    LEFT JOIN category c ON c.id = p.category_id
+                    LEFT JOIN supplier s ON s.id= p.supplier_id
+                    LEFT JOIN subcategory sc ON sc.id= p.subcategory_id
+                    LEFT JOIN subsubcategory ssc ON ssc.id= p.subsubcategory_id
+                    WHERE p.supplier_id=? AND p.category_id =? AND p.subcategory_id =? 
+                    "; 
+
+                    return  $this->db->query($query,array($supplier,$category,$subcategory))->result_array();
+
+                }else if ($supplier !=0 && $category !=0 && $subcategory !=0 && $subsubcategory !=0){
+
+                    $query = "SELECT p.id ,p.name ,sc.name subcategory, c.name category , s.name supplier,p.image_first
+                    FROM product p
+                    LEFT JOIN category c ON c.id = p.category_id
+                    LEFT JOIN supplier s ON s.id= p.supplier_id
+                    LEFT JOIN subcategory sc ON sc.id= p.subcategory_id
+                    LEFT JOIN subsubcategory ssc ON ssc.id= p.subsubcategory_id
+                    WHERE p.supplier_id=? AND p.category_id =? AND p.subcategory_id =? AND p.subsubcategory_id =?
+                    "; 
+
+                    return  $this->db->query($query,array($supplier,$category,$subcategory,$subsubcategory))->result_array();
+                
+                }else if ($supplier ==0 && $category !=0 && $subcategory ==0 && $subsubcategory ==0){
+
+                    $query = "SELECT p.id ,p.name ,sc.name subcategory, c.name category , s.name supplier,p.image_first
+                    FROM product p
+                    LEFT JOIN category c ON c.id = p.category_id
+                    LEFT JOIN supplier s ON s.id= p.supplier_id
+                    LEFT JOIN subcategory sc ON sc.id= p.subcategory_id
+                    LEFT JOIN subsubcategory ssc ON ssc.id= p.subsubcategory_id
+                    WHERE p.category_id =? 
+                    "; 
+
+                return  $this->db->query($query,array($category))->result_array();
+                
+                }else if ($supplier ==0 && $category !=0 && $subcategory !=0 && $subsubcategory ==0){
+
+                    $query = "SELECT p.id ,p.name ,sc.name subcategory, c.name category , s.name supplier,p.image_first
+                    FROM product p
+                    LEFT JOIN category c ON c.id = p.category_id
+                    LEFT JOIN supplier s ON s.id= p.supplier_id
+                    LEFT JOIN subcategory sc ON sc.id= p.subcategory_id
+                    LEFT JOIN subsubcategory ssc ON ssc.id= p.subsubcategory_id
+                    WHERE p.category_id =? AND p.subcategory_id = ?
+                    "; 
+
+                return  $this->db->query($query,array($category,$subcategory))->result_array();
+                
+                }else if ($supplier ==0 && $category !=0 && $subcategory !=0 && $subsubcategory !=0){
+
+                    $query = "SELECT p.id ,p.name ,sc.name subcategory, c.name category , s.name supplier,p.image_first
+                    FROM product p
+                    LEFT JOIN category c ON c.id = p.category_id
+                    LEFT JOIN supplier s ON s.id= p.supplier_id
+                    LEFT JOIN subcategory sc ON sc.id= p.subcategory_id
+                    LEFT JOIN subsubcategory ssc ON ssc.id= p.subsubcategory_id
+                    WHERE p.category_id =? AND p.subcategory_id = ? AND p.subsubcategory_id =?
+                    "; 
+
+                return  $this->db->query($query,array($category,$subcategory,$subsubcategory))->result_array();
+                
+                }
+
+    }else{
+
+                if($supplier !=0 && $category ==0 && $subcategory ==0 && $subsubcategory ==0){
+                   
+                    $query = "SELECT p.id ,p.name ,sc.name subcategory, c.name category , s.name supplier,p.image_first
+                    FROM product p
+                    LEFT JOIN category c ON c.id = p.category_id
+                    LEFT JOIN supplier s ON s.id= p.supplier_id
+                    LEFT JOIN subcategory sc ON sc.id= p.subcategory_id
+                    LEFT JOIN subsubcategory ssc ON ssc.id= p.subsubcategory_id
+                    WHERE p.supplier_id=? AND  p.name LIKE ?
+                    "; 
+                    return  $this->db->query($query,array($supplier,$product_name))->result_array();
+
+                }else if ($supplier !=0 && $category !=0 && $subcategory ==0 && $subsubcategory ==0){
+                    $query = "SELECT p.id ,p.name ,sc.name subcategory, c.name category , s.name supplier,p.image_first
+                    FROM product p
+                    LEFT JOIN category c ON c.id = p.category_id
+                    LEFT JOIN supplier s ON s.id= p.supplier_id
+                    LEFT JOIN subcategory sc ON sc.id= p.subcategory_id
+                    LEFT JOIN subsubcategory ssc ON ssc.id= p.subsubcategory_id
+                    WHERE p.supplier_id=? AND p.category_id =? AND p.name LIKE ?
+                    "; 
+                     
+                    return  $this->db->query($query,array($supplier,$category,$product_name))->result_array();
+
+                }else if ($supplier !=0 && $category !=0 && $subcategory !=0 && $subsubcategory ==0){
+
+                    $query = "SELECT p.id ,p.name ,sc.name subcategory, c.name category , s.name supplier,p.image_first
+                    FROM product p
+                    LEFT JOIN category c ON c.id = p.category_id
+                    LEFT JOIN supplier s ON s.id= p.supplier_id
+                    LEFT JOIN subcategory sc ON sc.id= p.subcategory_id
+                    LEFT JOIN subsubcategory ssc ON ssc.id= p.subsubcategory_id
+                    WHERE p.supplier_id=? AND p.category_id =? AND p.subcategory_id =? AND p.name like ?
+                    "; 
+
+                    return  $this->db->query($query,array($supplier,$category,$subcategory,$product_name))->result_array();
+
+                }else if ($supplier !=0 && $category !=0 && $subcategory !=0 && $subsubcategory !=0){
+
+                    $query = "SELECT p.id ,p.name ,sc.name subcategory, c.name category , s.name supplier,p.image_first
+                    FROM product p
+                    LEFT JOIN category c ON c.id = p.category_id
+                    LEFT JOIN supplier s ON s.id= p.supplier_id
+                    LEFT JOIN subcategory sc ON sc.id= p.subcategory_id
+                    LEFT JOIN subsubcategory ssc ON ssc.id= p.subsubcategory_id
+                    WHERE p.supplier_id=? AND p.category_id =? AND p.subcategory_id =? AND p.subsubcategory_id =? AND p.name LIKE ?
+                    "; 
+
+                return  $this->db->query($query,array($supplier,$category,$subcategory,$subsubcategory,$product_name))->result_array();
+                
+                }else if ($supplier ==0 && $category !=0 && $subcategory ==0 && $subsubcategory ==0){
+
+                    $query = "SELECT p.id ,p.name ,sc.name subcategory, c.name category , s.name supplier,p.image_first
+                    FROM product p
+                    LEFT JOIN category c ON c.id = p.category_id
+                    LEFT JOIN supplier s ON s.id= p.supplier_id
+                    LEFT JOIN subcategory sc ON sc.id= p.subcategory_id
+                    LEFT JOIN subsubcategory ssc ON ssc.id= p.subsubcategory_id
+                    WHERE p.category_id =? AND p.name LIKE ?
+                    "; 
+
+                return  $this->db->query($query,array($category,$product_name))->result_array();
+                
+                }else if ($supplier ==0 && $category !=0 && $subcategory !=0 && $subsubcategory ==0){
+
+                    $query = "SELECT p.id ,p.name ,sc.name subcategory, c.name category , s.name supplier,p.image_first
+                    FROM product p
+                    LEFT JOIN category c ON c.id = p.category_id
+                    LEFT JOIN supplier s ON s.id= p.supplier_id
+                    LEFT JOIN subcategory sc ON sc.id= p.subcategory_id
+                    LEFT JOIN subsubcategory ssc ON ssc.id= p.subsubcategory_id
+                    WHERE p.category_id =? AND p.subcategory_id = ? AND p.name LIKE ?
+                    "; 
+
+                return  $this->db->query($query,array($category,$subcategory,$product_name))->result_array();
+                
+                }else if ($supplier ==0 && $category !=0 && $subcategory !=0 && $subsubcategory !=0){
+
+                    $query = "SELECT p.id ,p.name ,sc.name subcategory, c.name category , s.name supplier,p.image_first
+                    FROM product p
+                    LEFT JOIN category c ON c.id = p.category_id
+                    LEFT JOIN supplier s ON s.id= p.supplier_id
+                    LEFT JOIN subcategory sc ON sc.id= p.subcategory_id
+                    LEFT JOIN subsubcategory ssc ON ssc.id= p.subsubcategory_id
+                    WHERE p.category_id =? AND p.subcategory_id = ? AND p.subsubcategory_id =? AND p.name LIKE ?
+                    "; 
+
+                return  $this->db->query($query,array($category,$subcategory,$subsubcategory,$product_name))->result_array();
+                
+                }else if ($supplier ==0 && $category ==0 && $subcategory ==0 && $subsubcategory ==0){
+
+                    $query = "SELECT p.id ,p.name ,sc.name subcategory, c.name category , s.name supplier,p.image_first
+                    FROM product p
+                    LEFT JOIN category c ON c.id = p.category_id
+                    LEFT JOIN supplier s ON s.id= p.supplier_id
+                    LEFT JOIN subcategory sc ON sc.id= p.subcategory_id
+                    LEFT JOIN subsubcategory ssc ON ssc.id= p.subsubcategory_id
+                    WHERE  p.name LIKE ?
+                    "; 
+
+                return  $this->db->query($query,array($product_name))->result_array();}
 
     }
+        /*
+        if( $supplier=="0" && $category != "0" && $subcategory=="0" && $subsubcategory=="0"){
 
+            $query = "SELECT p.id ,p.name ,sc.name subcategory, c.name category , s.name supplier,p.image_first
+            FROM product p
+            LEFT JOIN category c ON c.id = p.category_id
+            LEFT JOIN supplier s ON s.id= p.supplier_id
+            WHERE p.category_id = ? 
+            "; 
+            return  $this->db->query($query,array($category))->result_array();
+
+        }else if($supplier=="0" && $category!="0" && $subcategory !="0" && $subsubcategory=="0"){
+
+            $query = "SELECT p.id ,p.name ,sc.name subcategory, c.name category , s.name supplier,p.image_first
+            FROM product p
+            LEFT JOIN category c ON c.id = p.category_id
+            LEFT JOIN supplier s ON s.id= p.supplier_id
+            LEFT JOIN subcategory sc ON sc.id= p.subcategory_id
+            WHERE p.category_id = ? AND p.subcategory_id = ? 
+            "; 
+             return  $this->db->query($query,array($category,$subcategory))->result_array();
+
+        }else if($supplier!="0" && $category!="0" && $subcategory !="0" && $subsubcategory=="0"){
+
+            $query = "SELECT p.id ,p.name ,sc.name subcategory, c.name category , s.name supplier,p.image_first
+            FROM product p
+            LEFT JOIN category c ON c.id = p.category_id
+            LEFT JOIN supplier s ON s.id= p.supplier_id
+            LEFT JOIN subcategory sc ON sc.id= p.subcategory_id
+            WHERE p.supplier_id =? AND p.category_id = ? AND p.subcategory_id = ? 
+            "; 
+             return  $this->db->query($query,array($supplier,$category,$subcategory))->result_array();
+
+        }else if($supplier==0 && $category!=0 && $subcategory !=0 && $subsubcategory!=0){
+
+            $query = "SELECT p.id ,p.name ,sc.name subcategory, c.name category , s.name supplier,p.image_first
+            FROM product p
+            LEFT JOIN category c ON c.id = p.category_id
+            LEFT JOIN supplier s ON s.id= p.supplier_id
+            LEFT JOIN subcategory sc ON sc.id= p.subcategory_id
+            LEFT JOIN subsubcategory ssc ON ssc.id= p.subsubcategory_id
+            WHERE  p.category_id = ? AND p.subcategory_id = ? AND p.subsubcategory_id = ? 
+            "; 
+             return  $this->db->query($query,array($category,$subcategory,$sub$subcategory))->result_array();
+
+   
+        }else if($supplier!=0 && $category!=0 && $subcategory !=0 && $subsubcategory!=0){
+
+            $query = "SELECT p.id ,p.name ,sc.name subcategory, c.name category , s.name supplier,p.image_first
+            FROM product p
+            LEFT JOIN category c ON c.id = p.category_id
+            LEFT JOIN supplier s ON s.id= p.supplier_id
+            LEFT JOIN subcategory sc ON sc.id= p.subcategory_id
+            LEFT JOIN subsubcategory ssc ON ssc.id= p.subsubcategory_id
+            WHERE p.supplier_id=? AND p.category_id = ? AND p.subcategory_id = ? AND p.subsubcategory_id = ? 
+            "; 
+             return  $this->db->query($query,array($supplier,$category,$subcategory,$sub$subcategory))->result_array();
+
+        }else if($supplier!=0 && $category==0 && $subcategory ==0 && $subsubcategory==0){
+
+            $query = "SELECT p.id ,p.name ,sc.name subcategory, c.name category , s.name supplier,p.image_first
+            FROM product p
+            LEFT JOIN category c ON c.id = p.category_id
+            LEFT JOIN supplier s ON s.id= p.supplier_id
+            WHERE p.supplier_id=?
+            "; 
+             return  $this->db->query($query,array($supplier))->result_array();
+
+        }
+
+
+       */
+
+
+}
 
 // agregar esta funcion al proyecto 
 

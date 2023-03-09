@@ -44,7 +44,7 @@
                                         </select>-->
                                        
 
-                                        <input class="input" placeholder="Nombre de producto">
+                                        <input class="input" id="#product_name"placeholder="Nombre de producto">
                                         <button class="search-btn" id="search_product">BUSCAR</button>
                                 
                                 </div>

@@ -152,7 +152,7 @@ $route['api/news/up/image/(:num)']['POST'] = 'News/upImage/$1'; //listo
 $route['api/home/delete/news']['POST'] = 'News/deleteNews'; //listo
 $route['api/home/update/news']['POST'] = 'News/updateNews';
 $route['api/home/changeState/news']['POST'] = 'News/changeState';
-
+$route['api/home/state/news']['POST'] = 'News/changeState';
 //SERVICES_GALLERY -CPANEL
 
 $route['service/admin/gallery']['GET'] ='Gallery/adminGallery/$1';

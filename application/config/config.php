@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 
-$config['base_url'] = 'http://test.flexitec.cl/';
+$config['base_url'] = 'http://localhost/site-flexitec-up';
 //$config['base_url'] = 'https://newhidratec.hidratec.cl/';
 /*
 |--------------------------------------------------------------------------

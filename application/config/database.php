@@ -78,9 +78,9 @@ $query_builder = TRUE;
 $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
-	'username' => 'cihtcl_soporte',
-	'password' => 'e?_=e70iH#)i',
-	'database' => 'cihtcl_flexitec',
+	'username' => 'root',
+	'password' => '',
+	'database' => 'site_flexitec',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

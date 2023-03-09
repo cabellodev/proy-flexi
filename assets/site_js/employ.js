@@ -4,9 +4,6 @@ $(()=>{
 	get_section();
 });
 
-
-
-
 get_section = ()=> {
     $.ajax({
 		type: "GET",
@@ -22,28 +19,20 @@ get_section = ()=> {
 draw_sections =(section)=>{
    
     section.forEach(element =>{
-
-       
          if(element.item == "Formulario de postulación"){
-           
             $(".form-employ").text(element.title);
          }
         
          if(element.item == "Cabecera de módulo Empleo"  ){
-
 			url = host_url + `assets/images/sections/${element.url}`;
-
             $(".title-employ").text(element.title);
-
-			  $(".page-header-about").css({"background":`linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url(${url})`, 
+			$(".page-header-about").css({"background":`linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url(${url})`, 
                                          "height": "500px",
                                          "background-position": "top",
                                          "background-repeat": "no-repeat",
                                          "background-size": "cover"});
           }
-
     })
-     
 }
 
 
@@ -90,9 +79,7 @@ create_notification =()=>{
         });
 }
 
-
 get_publications=()=>{
-
 	$.ajax({
 		type: "GET",
 		url: host_url + 'api/publications',
@@ -103,7 +90,6 @@ get_publications=()=>{
 			  close_open_postulate(result[0].state);
 			}
         });
-
 }
 
 get_charges=()=>{

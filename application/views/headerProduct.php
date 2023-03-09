@@ -20,7 +20,7 @@
         
    
         <link href="<?php echo base_url(); ?>assets/site_css/bootstrap-icons.css" rel="stylesheet">
-
+        <link href="<?php echo base_url(); ?>assets/vendor/selectize/selectize.bootstrap3.css?v=<?php echo(rand()); ?>" rel="stylesheet">
         <link href="<?php echo base_url(); ?>assets/site_css/bootstrap.min.css" rel="stylesheet">
         <link href="<?php echo base_url(); ?>assets/site_css/templatemo-leadership-event.css" rel="stylesheet">
         <link href="<?php echo base_url(); ?>assets/site_css/venus.css" rel="stylesheet">
@@ -104,7 +104,7 @@
         <script src="<?php echo base_url() ;?>assets/site_js/slick.min.js"></script>
         <script src="<?php echo base_url() ;?>assets/site_js/nouislider.min.js"></script>
         <script src="<?php echo base_url() ;?>assets/site_js/jquery.zoom.min.js"></script>
-        
+        <script src="<?php echo base_url(); ?>assets/vendor/selectize/selectize.min.js?v=<?php echo(rand()); ?>"></script>
       
 
 

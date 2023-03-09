@@ -10,7 +10,7 @@
     <div class="card mb-3">
       <div class="card-header">
         <i class="fas fa-table"></i>
-         Lista de noticias
+         Lista de noticias 
          <button class="btn btn-secondary float-right" type='button' data-toggle="modal" data-target="#create_new_modal" ><i class="fas fa-plus"></i> Agregar noticia</button>
       </div>
       <div class="card-body">
@@ -19,11 +19,13 @@
             <thead>
               <tr>
                 <th>Titulo</th>
-                <th>Imagen</th>
+                <th>Publicado</th>
+                <th>Expira</th>
                 <th>Estado</th>
+                <th>Imagen</th>
                 <th>Ver</th>
                 <th>Editar</th>
-                <th>Deshabilitar</th>
+                <th>Des/Hab</th>
                 <th>Eliminar</th>
               </tr>
             </thead>
@@ -68,23 +70,36 @@
                 <div class="form-group">
                         <form  id= "image" >
                         <div class="row">
-                          <div class="col-md-6 mb-3">
-                                <label for="actividad">Título </label>
-                                <div div class="input-group" id="frm_name2">
-                                    <input type="text" class="form-control" name="title" id="title" placeholder="Ingrese titulo">
-                                    <div class="invalid-feedback "></div>
-                                </div>
-                                
-                          </div>
-                          <div class="col-md-6 mb-3">
-                                <label for="actividad">Descripción</label>
-                                <div div class="input-group" id="frm_name2">
-                                    <textarea class="form-control"  name="description" id="description" placeholder="Ingrese descripción"></textarea>
-                                    <div class="invalid-feedback "></div>
-                                </div>
+                              <div class="col-md-6 mb-3">
+                                    <label for="actividad">Título </label>
+                                    <div div class="input-group" id="frm_name2">
+                                        <input type="text" class="form-control" name="title" id="title" placeholder="Ingrese titulo">
+                                        <div class="invalid-feedback "></div>
+                                    </div>
+                                    
+                              </div>
 
-                          </div>
+                              <div class="col-lg-3 col-md-3 col-ms-12" >
+                                          <label for="from">Fecha actual</label>
+                                          <input class="form-control" type="text" id="from" name="from" readonly>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-ms-12" >
+                                          <label for="to">Fecha caducidad</label>
+                                          <input type="text"  class="form-control" id="to" name="to">
+                                </div>
                         </div>
+                        <div class="row">
+                              <div class="col-md-12 mb-3">
+                                      <label for="actividad">Descripción</label>
+                                      <div div class="input-group" id="frm_name2">
+                                          <textarea class="form-control"  name="description" id="description" placeholder="Ingrese descripción"></textarea>
+                                          <div class="invalid-feedback "></div>
+                                      </div>
+
+                                </div>
+                        </div>
+
+                        
                         <div class="row">
                               <div class="col-md-12 mb-3">
                               
@@ -130,29 +145,39 @@
                 <div class="form-group">
                         <form  id= "image" >
                         <div class="row">
-                          <div class="col-md-6 mb-3">
-                                <label for="actividad">Título</label>
-                                <div div class="input-group" id="frm_name2">
-                                    <input type="text" class="form-control"  name="title" id="title-edit" placeholder="Ingrese nombre">
-                                    <div class="invalid-feedback "></div>
+                                <div class="col-md-6 mb-3">
+                                      <label for="actividad">Título</label>
+                                      <div div class="input-group" id="frm_name2">
+                                          <input type="text" class="form-control"  name="title" id="title-edit" placeholder="Ingrese nombre">
+                                          <div class="invalid-feedback "></div>
+                                      </div>
+                                      
                                 </div>
-                                
+                                <div class="col-lg-3 col-md-3 col-ms-12" >
+                                          <label for="from">Fecha actual</label>
+                                          <input class="form-control" type="text" id="date_e" name="from" readonly>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-ms-12" >
+                                          <label for="to">Fecha caducidad</label>
+                                          <input type="text"  class="form-control" id="date_to_e" name="to">
+                                </div>
                           </div>
+                        
+                          <div class="row"> 
+                          <div class="col-md-12 mb-3">
+                                      <label for="actividad">Descripción</label>
+                                      <div div class="input-group" id="frm_name2">
+                                          <textarea class="form-control"  name="description" id="description-edit" placeholder="Ingrese descripción"></textarea>
+                                          <div class="invalid-feedback "></div>
+                                      </div>
 
-                          <div class="col-md-6 mb-3">
-                                <label for="actividad">Descripción</label>
-                                <div div class="input-group" id="frm_name2">
-                                    
-                                <textarea class="form-control"  name="title" id="description-edit" placeholder="Ingrese nombre"></textarea>
-                                    <div class="invalid-feedback "></div>
                                 </div>
-                                
                           </div>
-                        </div>
                     
                         <div class="form-group float-right">
                              <button type="button" id="edit_notice_btn" class="btn btn-primary">Guardar</button>
                         </div>
+              </div>
               </div>
         </div>
   </div>

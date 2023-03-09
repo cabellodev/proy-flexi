@@ -22,7 +22,7 @@
         <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap" rel="stylesheet">
         
-   
+        <link href="<?php echo base_url(); ?>assets/vendor/selectize/selectize.bootstrap3.css?v=<?php echo(rand()); ?>" rel="stylesheet">
         <link href="<?php echo base_url(); ?>assets/site_css/bootstrap-icons.css?v=<?php echo(rand()); ?>" rel="stylesheet">
         <link href="<?php echo base_url(); ?>assets/site_css/animate.min.css?v=<?php echo(rand()); ?>" rel="stylesheet">
         <link href="<?php echo base_url(); ?>assets/site_css/bootstrap.min.css?v=<?php echo(rand()); ?>" rel="stylesheet">
@@ -170,13 +170,10 @@
 
         <script>AOS.init();</script>
       
-     
-        
         <script src="<?php echo base_url(); ?>assets/site_js/jquery.sticky.js"></script>
         <script src="<?php echo base_url(); ?>assets/site_js/waypoints.min.js"></script>
         <script src="<?php echo base_url(); ?>assets/site_js/counterup.min.js"></script>
-        <script src="<?php echo base_url(); ?>assets/site_js/chat_live.js?v=<?php echo(rand()); ?>"></script>
-      
+        <script src="<?php echo base_url(); ?>assets/vendor/selectize/selectize.min.js?v=<?php echo(rand()); ?>"></script>
   
         
 
